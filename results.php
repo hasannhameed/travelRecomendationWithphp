@@ -1,3 +1,11 @@
+<?php
+// Ensure destinations for the selected region exist
+$region = $data['region'];
+if (!isset($destinations[$region])) {
+    $destinations[$region] = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +35,7 @@
         <div class="ideas">
             <h2>Here are some travel ideas based on the details you entered:</h2>
             <ul>
-                <?php foreach ($destinations[$data['region']] as $d) : ?>
+                <?php foreach ($destinations[$region] as $d) : ?>
                     <li>
                         <a href="#"><img src="<?= esc_str($d[0]) ?>" alt="<?= esc_str($d[1]) ?>"></a>
                         <h3><?= esc_str($d[1]) ?></h3>
